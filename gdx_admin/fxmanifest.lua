@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'Gdany#2835'
 description 'Admin ped for admins instead of tags'
-version '1.0.0'
+version '1.1'
 
 client_scripts {
     '@es_extended/locale.lua',

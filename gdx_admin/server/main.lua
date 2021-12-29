@@ -1,5 +1,5 @@
 ESX = nil
-local active = false
+local active = true
 
 TriggerEvent(Config.GetSharedObject, function(obj)
     ESX = obj 
@@ -7,12 +7,29 @@ end)
 
 RegisterCommand(Config.AdminPedCMD, function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer.getGroup() == "admin" then
+    local group = xPlayer.getGroup()
+    if group == Config.Owner then
+        if active == false then
+            TriggerClientEvent("gdx_admin:setPlayer", source)
+            active = true
+        else
+            TriggerClientEvent("gdx_admin:setOwner", source)
+            active = false
+        end
+    elseif group == Config.Admin then
         if active == false then
             TriggerClientEvent("gdx_admin:setPlayer", source)
             active = true
         else
             TriggerClientEvent("gdx_admin:setAdmin", source)
+            active = false
+        end
+    elseif group == Config.Mod then
+        if active == false then
+            TriggerClientEvent("gdx_admin:setPlayer", source)
+            active = true
+        else
+            TriggerClientEvent("gdx_admin:setMod", source)
             active = false
         end
     else

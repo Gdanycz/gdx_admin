@@ -39,15 +39,42 @@ AddEventHandler('gdx_admin:setPlayer', function()
 		end)
 end)
 
-RegisterNetEvent('gdx_admin:setAdmin')
-AddEventHandler('gdx_admin:setAdmin', function()
-local ped = 's_m_y_dockwork_01'
-local hash = GetHashKey(ped)
+RegisterNetEvent('gdx_admin:setOwner')
+AddEventHandler('gdx_admin:setOwner', function()
+    local ped = 'ig_trafficwarden'
+    local hash = GetHashKey(ped)
 	RequestModel(hash)
-	while not HasModelLoaded(hash) do 
+	while not HasModelLoaded(hash) do
 		RequestModel(hash)
 		Citizen.Wait(0)
-	end	
+	end
 		SetPlayerModel(PlayerId(), hash)
 		TriggerEvent('esx:restoreLoadout')
 end)
+
+RegisterNetEvent('gdx_admin:setAdmin')
+AddEventHandler('gdx_admin:setAdmin', function()
+    local ped = 's_m_y_dockwork_01'
+    local hash = GetHashKey(ped)
+	RequestModel(hash)
+	while not HasModelLoaded(hash) do
+		RequestModel(hash)
+		Citizen.Wait(0)
+	end
+		SetPlayerModel(PlayerId(), hash)
+		TriggerEvent('esx:restoreLoadout')
+end)
+
+RegisterNetEvent('gdx_admin:setMod')
+AddEventHandler('gdx_admin:setMod', function()
+    local ped = 'ig_avon'
+    local hash = GetHashKey(ped)
+	RequestModel(hash)
+	while not HasModelLoaded(hash) do
+		RequestModel(hash)
+		Citizen.Wait(0)
+	end
+		SetPlayerModel(PlayerId(), hash)
+		TriggerEvent('esx:restoreLoadout')
+end)
+
